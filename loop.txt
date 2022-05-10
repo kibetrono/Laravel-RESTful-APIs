@@ -1,0 +1,116 @@
+<?php
+
+namespace App\Http\Resources\V1;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class QuestionResource extends JsonResource
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
+     */
+    public function toArray($request)
+    {
+//         $mytextchoices= $this->mytextchoices;
+
+//         foreach(explode(',', $request->mytextchoices) as $info){
+// return  [
+//     'Question_id'=>$this->id,
+//             'rate'=>$this->rate,
+//             'mytextchoices'=>$this->mytextchoices,
+// ];
+
+//         }
+      
+        $mytextchoices= $this->mytextchoices;
+        foreach($mytextchoices as $mytext) {
+            $mytextchoices= $this->mytextchoices;
+
+       };
+        
+        $arrayData= [
+            'Question_id'=>$this->id,
+            'rate'=>$this->rate,
+            'created_at'=>$this->created_at,
+            'status'=>$this->status,
+            'title'=>$this->title,
+            'description'=>$this->description,
+            'title'=>$this->title,
+            'required'=>$this->required,
+
+
+        ];
+
+        return $arrayData;
+
+
+//   foreach ($request as $key => $request) {
+//             $data['metadata'][$key] = [
+//                 'Question_id'=>$this->id,
+//                 'rate'=>$this->rate,
+//                 'created_at'=>$this->created_at,
+//                 'status'=>$this->status,
+//                 'title'=>$this->title,
+             
+//             ];
+
+//             return $data;
+
+
+
+
+        if($this->rate == ''){
+
+            
+
+                }else {
+                    $arrayData['minimum'] = $this->minimum;
+
+            $arrayData['maximum'] = $this->maximum;
+                    // $arrayData['mytextchoices'] = $this->mytextchoices;
+
+
+                    // $arrayData['details'] = new QuestionResource($this->status);
+            
+                }
+
+        // return $arrayData;
+
+
+
+        // if($this->status == 'active'){
+        //     return[
+
+        //     'type'=>400,
+                
+        //     ];
+        // }else{
+        //     return[
+
+        //         'Moringa School'=>1400,
+                    
+        //         ];
+        // };
+    }
+}
+
+// public function toArray($request)
+// {
+//     $arrayData = [
+//         'id' => $this->id,
+//         'unread' => $this->unread
+//     ];
+
+//     if(auth()->user()->role == 'company'){
+//         $arrayData['details'] = new EmployeeAddressResource($this->employeeAddress);
+//     }else {
+//         $arrayData['details'] = new CompanyAddressResource($this->companyAddress);
+
+//     }
+
+//     return $arrayData
+// }
+
